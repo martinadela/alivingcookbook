@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+
+        h1 {
+            font-family: 'Lora', serif;
+            text-align:left;
+            font-size: 183%;
+            text-transform: uppercase;
+            word-break: break-all;
+            color:rgba(0, 0, 0);
+            position:static;
+        }
+
+        body, .button {
+            cursor: url('images/spoon.png') 16 16, auto;    
+        }
+
+        .button {
+            color:rgb(243, 103, 10);
+            font-family: 'Lora', serif;
+            font-size: 120%;
+            background-color:rgba(0, 0, 0, 0.5);
+            border: none;
+            user-select: none; 
+            box-shadow:white 1px 1px 2px;
+            display: block;
+        }  
+
+        #kitchen {
+            position: fixed;
+            bottom: 20%;
+            left: 1%;
+            z-index: 10;
+        }
+
+        #pause {
+            display: none;
+        }
+
+    </style>
+    <title>
+       A  L I V I N G  C O O K B O O K.
+    </title>
+</head>
+<body>
+    <h1>
+        <div>
+    ARTISTS' RECIPES IN CONFINEMENT: A LIVING COOKBOOK
+        </div>
+    </h1>
+
+    <div id="kitchen">
+        <audio loop="true">
+            <source src="sounds/cooking.mp3" type="audio/mpeg" />
+            <source src="sounds/cooking.ogg" type="audio/ogg" />
+        </audio>
+        <button id="play" class="button on">
+            ▶ cook
+        </button>
+        <button id="pause" class="button off">
+            🍴
+        </button>
+    </div>
+    
+    <script>
+        const playContainer = document.querySelector('#kitchen')
+        const audioElement = playContainer.querySelector('audio')
+        const playButton = playContainer.querySelector('#play')
+        const pauseButton = playContainer.querySelector('#pause')
+        playButton.onclick = function() {
+            audioElement.play()
+            playButton.style.display = 'none'
+            pauseButton.style.display = 'block'
+        }
+        pauseButton.onclick = function() {
+            audioElement.pause()
+            playButton.style.display = 'block'
+            pauseButton.style.display = 'none'
+        }
+    </script>
+
+    <div id="svg-container"></div>
+    <script>
+        const mapIdToUrl = {
+            'vejay': 'recipes/vejay_nair/vejay_nair.html',
+            'chaveli_1_': 'recipes/chaveli_sifre/chaveli_sifre.html' ,
+            'martina': 'recipes/martina_adela/EatingaLocrowithWill.html',
+            'about' : 'about.html',
+        }
+            
+
+        const initializeKitchenSvg = function () {
+            Object.entries(mapIdToUrl).forEach(function(pair) {
+                const id = pair[0]  
+                const url = pair[1]
+                const button = document.querySelector('#' + id)
+                if (!button) {
+                    throw new Error(`The element with id "${id}" could not be found in the svg`)
+                }
+                button.onclick = function() {
+                    window.open(url, '_blank')
+                }
+            })
+        }
+
+        const svgContainer = document.querySelector('#svg-container')
+        fetch('./kitchen.svg')
+            .then(function(response) {
+                return response.text()
+            })
+            .then(function(svgText) {
+                svgContainer.innerHTML = svgText
+                initializeKitchenSvg()
+            })
+    </script>
+</body>
+
+</html>

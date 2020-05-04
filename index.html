@@ -20,10 +20,10 @@
         h1 {
             font-family: 'Lora', serif;
             text-align:left;
-            font-size: 183%;
+            font-size: 200%;
             text-transform: uppercase;
             word-break: break-all;
-            color:rgba(0, 0, 0);
+            color:lightslategray;
             position:static;
         }
 
@@ -38,9 +38,19 @@
             background-color:rgba(0, 0, 0, 0.5);
             border: none;
             user-select: none; 
-            box-shadow:white 1px 1px 2px;
             display: block;
         }  
+
+        .recipe-button {
+            transition-property: fill, opacity;
+            transition-duration: 200ms;
+            fill: none;
+        }
+
+        .recipe-button.blink {
+            fill: white;
+            opacity: 0.4;
+        }
 
         #kitchen {
             position: fixed;
@@ -103,22 +113,46 @@
             'martina': 'recipes/martina_adela/EatingaLocrowithWill.html',
             'about' : 'about.html',
         }
-            
 
-        const initializeKitchenSvg = function () {
+        const iterButtons = function(cb) {
             Object.entries(mapIdToUrl).forEach(function(pair) {
-                const id = pair[0]  
+                const id = pair[0]
                 const url = pair[1]
                 const button = document.querySelector('#' + id)
                 if (!button) {
                     throw new Error(`The element with id "${id}" could not be found in the svg`)
                 }
+                cb(id, url, button)
+            })
+        }
+            
+        const initializeKitchenSvg = function () {
+
+            // Initialize buttons
+            iterButtons(function(id, url, button) {
                 button.onclick = function() {
                     window.open(url, '_blank')
                 }
+                button.classList.add('recipe-button')
             })
+
+            // Buttons blink
+            let counter = -1
+            setInterval(function() {
+                counter++
+                if (counter % 25 === 0) {
+                    iterButtons(function(id, url, button) {
+                        button.classList.add('blink')
+                    })
+                } else if (counter % 25 === 1) {
+                    iterButtons(function(id, url, button) {
+                        button.classList.remove('blink')
+                    })
+                }
+            }, 200)
         }
 
+        // Fetch SVG
         const svgContainer = document.querySelector('#svg-container')
         fetch('./kitchen.svg')
             .then(function(response) {

@@ -2,8 +2,13 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+    <link href="variables.css" rel="stylesheet">
+
+    <script src="https://npmcdn.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -11,35 +16,51 @@
             padding: 0;
         }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             font-size: 20px;
+            height: 100%;
+            background-color: var(--background);
+            /* disabling overscroll so chrome doesnt go to previous page on swipe left */
+            overscroll-behavior-x: none;
+            overscroll-behavior-y: none;
+        }
+
+        main {
+            height: 100%;
+            opacity: 0;
+            transition-property: opacity;
+            transition-duration: 1s;
+        }
+
+        main.loaded {
+            opacity: 1;
         }
 
         h1 {
-            font-family: 'Lora', serif;
-            text-align:left;
+            font-family: 'Lora', serif;
+            text-align: left;
             font-size: 250%;
             text-transform: uppercase;
             word-break: break-all;
-            color:lightslategray;
-            position:static;
+            position: static;
         }
 
         body, .button {
-            cursor: url('images/spoon.png') 16 16, auto;    
+            cursor: url('images/spoon.png') 16 16, auto;
         }
 
         .button {
-            color:rgb(243, 103, 10);
+            color: var(--coralPink);
             font-family: 'Lora', serif;
             font-size: 120%;
-            background-color:rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             border: none;
-            user-select: none; 
+            user-select: none;
             display: block;
-        }  
+        }
 
         .recipe-button {
             transition-property: fill, opacity;
@@ -52,7 +73,74 @@
             opacity: 0.4;
         }
 
-        #kitchen {
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: -webkit-fill-available;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition-property: opacity;
+            transition-duration: 1s;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        #splash-screen.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Spinner from https://tobiasahlin.com/spinkit/ */
+        .spinner {
+            width: 150px;
+            height: 150px;
+            margin: 100px auto;
+            background-color:var(--neonGreen);
+
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+            animation: sk-scaleout 1.0s infinite ease-in-out;
+        }
+
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        .spinner-container {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        /* Spinner END */
+
+        #play-container {
             position: fixed;
             bottom: 20%;
             left: 1%;
@@ -63,105 +151,269 @@
             display: none;
         }
 
+        #play-spinner {
+            display: none;
+        }
+
+        #play-container.playing #pause {
+            display: block;
+        }
+
+        #play-container.playing #play {
+            display: none;
+        }
+
+        #play-container.loading #play {
+            display: none;
+        }
+
+        #play-container.loading #play-spinner {
+            display: block;
+        }
+
+
+        .scroll-button {
+            display: none;
+            position: fixed;
+            font-size: 200%;
+        }
+        .scroll-button.disabled {
+            background-color: red;
+        }
+        @media screen and (max-aspect-ratio: 1280/800) {
+            .scroll-button {
+                display: initial;
+            }
+        }
+        #scroll-right {
+            bottom: 0;
+            right: 0;
+        }
+        #scroll-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        
+        #svg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* no scroll in other direction because there is a weird padding */
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        #svg-container svg {
+            width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-aspect-ratio: 1280/800) {
+            #svg-container {
+                overflow-y: hidden;
+                overflow-x: scroll;
+            }
+
+            #svg-container svg {
+                height: 100%;
+                width: auto;
+            }
+        }
     </style>
     <title>
-       A  L I V I N G  C O O K B O O K.
+        A  L I V I N G  C O O K B O O K.
     </title>
 </head>
-<body>
-    <h1>
-        <div>
-    ARTISTS' RECIPES IN CONFINEMENT: A LIVING COOKBOOK
-        </div>
-    </h1>
 
-    <div id="kitchen">
-        <audio loop="true">
-            <source src="sounds/cooking.mp3" type="audio/mpeg" />
-            <source src="sounds/cooking.ogg" type="audio/ogg" />
-        </audio>
-        <button id="play" class="button on">
-            ▶ cook
-        </button>
-        <button id="pause" class="button off">
-            🍴
-        </button>
+<body>
+    <!-- Spinner -->
+    <div class="spinner-container">
+        <div class="spinner"></div>
     </div>
-    
+
+    <main>
+        </div>
+
+        <div id="splash-screen">
+            <h1>
+                <div>Artists' Recipes in Confinement</div>
+                <div>Living Cookbook</div>
+            </h1>    
+        </div>
+        
+        <div id="svg-container"></div>
+        <div id="play-container">
+            <audio loop="true">
+                <source src="sounds/cooking.mp3" type="audio/mpeg" />
+                <source src="sounds/cooking.ogg" type="audio/ogg" />
+            </audio>
+            <button id="play" class="button on">
+                ▶ cook
+            </button>
+            <button id="pause" class="button off">
+                🍴
+            </button>
+            <div id="play-spinner">
+                LOADING
+            </div>
+        </div>
+
+        <button id="scroll-right" class="scroll-button">
+            >
+        </button>
+        <button id="scroll-left" class="scroll-button">
+            <
+        </button>
+    </main>
+
     <script>
-        const playContainer = document.querySelector('#kitchen')
+        const SPLASH_SCREEN_DURATION = 4000 // in milliseconds
+
+        const mapIdToUrl = {
+            'vejay': 'recipes/vejay_nair/vejay_nair.html',
+            'chaveli_1_': 'recipes/chaveli_sifre/chaveli_sifre.html',
+            'martina': 'recipes/martina_adela/EatingaLocrowithWill.html',
+            'about': 'about.html',
+        }
+
+        const splashScreenElement = document.querySelector('#splash-screen')
+        const playContainer = document.querySelector('#play-container')
         const audioElement = playContainer.querySelector('audio')
         const playButton = playContainer.querySelector('#play')
         const pauseButton = playContainer.querySelector('#pause')
-        playButton.onclick = function() {
-            audioElement.play()
-            playButton.style.display = 'none'
-            pauseButton.style.display = 'block'
-        }
-        pauseButton.onclick = function() {
-            audioElement.pause()
-            playButton.style.display = 'block'
-            pauseButton.style.display = 'none'
-        }
-    </script>
+        const svgContainer = document.querySelector('#svg-container')
+        const mainElement = document.querySelector('main')
+        const scrollRightButton = document.querySelector('#scroll-right')
+        const scrollLeftButton = document.querySelector('#scroll-left')
 
-    <div id="svg-container"></div>
-    <script>
-        const mapIdToUrl = {
-            'vejay': 'recipes/vejay_nair/vejay_nair.html',
-            'chaveli_1_': 'recipes/chaveli_sifre/chaveli_sifre.html' ,
-            'martina': 'recipes/martina_adela/EatingaLocrowithWill.html',
-            'about' : 'about.html',
-        }
+        const initializeKitchen = function () {
+            mainElement.classList.add('loaded')
+            const svgElement = svgContainer.querySelector('svg')
 
-        const iterButtons = function(cb) {
-            Object.entries(mapIdToUrl).forEach(function(pair) {
-                const id = pair[0]
-                const url = pair[1]
-                const button = document.querySelector('#' + id)
-                if (!button) {
-                    throw new Error(`The element with id "${id}" could not be found in the svg`)
+            // Play button interactivity
+            playButton.onclick = function () {
+                if (audioElement.readyState < 3) {
+                    playContainer.classList.add('loading')
+                    const _canPlay = function() {
+                        playContainer.classList.remove('loading')
+                        playContainer.classList.add('playing')
+                    }
+                    audioElement.oncanplay = _canPlay
+                    audioElement.oncanplaythrough = _canPlay
+                } else {
+                    playContainer.classList.add('playing')
                 }
-                cb(id, url, button)
-            })
-        }
-            
-        const initializeKitchenSvg = function () {
+                audioElement.play()
+            }
+            pauseButton.onclick = function () {
+                audioElement.pause()
+                playContainer.classList.remove('playing')
+            }
 
-            // Initialize buttons
-            iterButtons(function(id, url, button) {
-                button.onclick = function() {
+            // splash screen
+            splashScreenElement.classList.add('visible')
+            splashScreenElement.onclick = function() {
+                splashScreenElement.classList.remove('visible')
+            }
+
+            // Remove title added by adobe illustrator
+            const adobeTitleElement = svgElement.querySelector('title')
+            adobeTitleElement.parentNode.removeChild(adobeTitleElement)
+
+            // Initialize kitchen buttons
+            _iterKitchenButtons(function (id, url, button) {
+                button.onclick = function () {
                     window.open(url, '_blank')
                 }
                 button.classList.add('recipe-button')
             })
 
+            // Scroll interactivity
+            scrollRightButton.onclick = function() {
+                const dimensions = _getWindowDimensions()
+                _scrollHorizontal(dimensions.width)
+            }
+            scrollLeftButton.onclick = function() {
+                const dimensions = _getWindowDimensions()
+                _scrollHorizontal(-dimensions.width)
+            }
+            const _updateScrollButtons = function() {
+                const box = svgElement.getBoundingClientRect()
+                const winDimensions = _getWindowDimensions()
+                scrollLeftButton.classList.remove('disabled')
+                scrollRightButton.classList.remove('disabled')
+                if (box.x === 0) {
+                    scrollLeftButton.classList.add('disabled')
+                } else if (box.width + box.x <= winDimensions.width) {
+                    scrollRightButton.classList.add('disabled')
+                }
+            }
+            svgContainer.onscroll = _updateScrollButtons
+            _updateScrollButtons()
+
             // Buttons blink
             let counter = -1
-            setInterval(function() {
+            setInterval(function () {
                 counter++
                 if (counter % 25 === 0) {
-                    iterButtons(function(id, url, button) {
+                    _iterKitchenButtons(function (id, url, button) {
                         button.classList.add('blink')
                     })
                 } else if (counter % 25 === 1) {
-                    iterButtons(function(id, url, button) {
+                    _iterKitchenButtons(function (id, url, button) {
                         button.classList.remove('blink')
                     })
                 }
             }, 200)
         }
 
-        // Fetch SVG
-        const svgContainer = document.querySelector('#svg-container')
-        fetch('./kitchen.svg')
-            .then(function(response) {
+        const main = function() {
+            fetch('./kitchen.svg')
+            .then(function (response) {
                 return response.text()
             })
-            .then(function(svgText) {
+            .then(function (svgText) {
                 svgContainer.innerHTML = svgText
-                initializeKitchenSvg()
+                initializeKitchen()
             })
+        }
+
+        const _iterKitchenButtons = function (cb) {
+            Object.entries(mapIdToUrl).forEach(function (pair) {
+                const id = pair[0]
+                const url = pair[1]
+                const button = document.querySelector('#' + id)
+                if (!button) {
+                    throw new Error(`The element with id "${id}" could not be found in the svg`)
+                }
+                cb(id, url, button)
+            })
+        }
+
+        const _getWindowDimensions = function() {
+            var win = window,
+                doc = document,
+                docElem = doc.documentElement,
+                body = doc.getElementsByTagName('body')[0],
+                width = win.innerWidth || docElem.clientWidth || body.clientWidth,
+                height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
+            return {width: width, height: height}
+        }
+
+        const _scrollHorizontal = function(offset) {
+            const svgElement = svgContainer.querySelector('svg')
+            const box = svgElement.getBoundingClientRect()
+            svgContainer.scroll({
+                top: 0,
+                left: -box.x + offset,
+                behavior: 'smooth'
+            })
+        }
+
+        main()
     </script>
 </body>
 

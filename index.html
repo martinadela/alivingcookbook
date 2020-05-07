@@ -20,12 +20,27 @@
         body {
             margin: 0;
             padding: 0;
-            font-size: 20px;
             height: 100%;
             background-color: var(--background);
             /* disabling overscroll so chrome doesnt go to previous page on swipe left */
             overscroll-behavior-x: none;
             overscroll-behavior-y: none;
+        }
+
+        body {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: 900px) {
+            body {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                font-size: 12px;
+            }
         }
 
         main {
@@ -63,18 +78,18 @@
         }
 
         .recipe-button {
-            transition-property: fill, opacity;
+            transition-property: fill-opacity, opacity;
             transition-duration: 200ms;
             fill: none;
         }
 
         .recipe-button.blink {
             fill: white;
-            opacity: 0.4;
+            fill-opacity: 0.4;
         }
 
         #splash-screen {
-            position: fixed;
+            position:fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -88,6 +103,27 @@
             pointer-events: none;
         }
 
+        #splash-screen h1 {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .frontitle {
+            color: var(--neonGreen);
+            font-size: 200%;
+            text-align: center;  
+            margin-top: 6%;
+        }
+
+        #subtitle {
+            font-size: 100%;
+            color: var(--neonGreen);
+            text-align: center;  
+            margin-top: 6%;
+
+        }
         #splash-screen.visible {
             opacity: 1;
             pointer-events: all;
@@ -179,6 +215,7 @@
         }
         .scroll-button.disabled {
             background-color: red;
+            opacity: 20%;
         }
         @media screen and (max-aspect-ratio: 1280/800) {
             .scroll-button {
@@ -188,6 +225,8 @@
         #scroll-right {
             bottom: 0;
             right: 0;
+            
+            
         }
         #scroll-left {
             bottom: 0;
@@ -239,8 +278,11 @@
 
         <div id="splash-screen">
             <h1>
-                <div>Artists' Recipes in Confinement</div>
-                <div>Living Cookbook</div>
+                <div class="frontitle">
+                    <div>Artists' Recipes</div>
+                    <div>in Confinement</div>
+                </div>
+                <div id="subtitle"> A Living Cookbook </div>
             </h1>    
         </div>
         

@@ -183,6 +183,10 @@
             z-index: 10;
         }
 
+        #play {
+            font-family: monospace;
+        }
+
         #pause {
             display: none;
         }
@@ -207,14 +211,16 @@
             display: block;
         }
 
-
         .scroll-button {
             display: none;
             position: fixed;
             font-size: 200%;
+            background-color: aliceblue;
+            opacity: 0.5;
+            color:grey;
         }
         .scroll-button.disabled {
-            background-color: red;
+            background-color: rgb(114, 94, 94);
             opacity: 20%;
         }
         @media screen and (max-aspect-ratio: 1280/800) {
@@ -225,8 +231,7 @@
         #scroll-right {
             bottom: 0;
             right: 0;
-            
-            
+                
         }
         #scroll-left {
             bottom: 0;
@@ -304,10 +309,10 @@
         </div>
 
         <button id="scroll-right" class="scroll-button">
-            >
+            ➞
         </button>
         <button id="scroll-left" class="scroll-button">
-            <
+            ←
         </button>
     </main>
 

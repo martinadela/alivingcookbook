@@ -85,12 +85,12 @@
         .recipe-button {
             transition-property: fill-opacity, opacity;
             transition-duration: 200ms;
-            fill: none;
         }
 
         .recipe-button.blink {
             fill: white;
-            fill-opacity: 0.4;
+            fill-opacity: 0.8;
+            opacity: 0.8;
         }
 
         #splash-screen {
@@ -123,8 +123,7 @@
             padding-top: 2em;
         }
 
-        .frontitle {
-        }
+    
 
         .subtitle.main {
             font-size: 60%;
@@ -354,7 +353,7 @@
 
         const mapIdToUrl = {
             'vejay': 'recipes/vejay_nair/vejay_nair.html',
-            'chaveli_1_': 'recipes/chaveli_sifre/chaveli_sifre.html',
+            'chaveli.st0': 'recipes/chaveli_sifre/chaveli_sifre.html',
             'martina': 'recipes/martina_adela/EatingaLocrowithWill.html',
             'about': 'about.html',
         }
@@ -402,7 +401,9 @@
 
             // Remove title added by adobe illustrator
             const adobeTitleElement = svgElement.querySelector('title')
-            adobeTitleElement.parentNode.removeChild(adobeTitleElement)
+            if (adobeTitleElement) {
+                adobeTitleElement.parentNode.removeChild(adobeTitleElement)
+            }
 
             // Initialize kitchen buttons
             _iterKitchenButtons(function (id, url, button) {

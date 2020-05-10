@@ -9,6 +9,7 @@
 	.st2{font-family:'MinionPro-Regular';}
 	.st3{font-size:12px;}
 	.st4{opacity:0;}
+	.st5{font-size:9px;}
 </style>
 <g id="collage-website.psd_1_">
 	
@@ -2112,4 +2113,5 @@ X159GfNs+qPGv+x2xA3R9f8Aem/ttM8KG2d3CaPOhND83CPZxq8/bRj6eE615ZiPtozrxrqt8+tI
 <path id="martina" class="st0" d="M750,589c0,0-37,0-31,23c0,0,2,21,31,35h35c0,0,14-5,29-35C814,612,813,587,750,589z"/>
 <text transform="matrix(0.9892 -0.1466 0.1466 0.9892 385.6272 520.9513)" class="st1 st2 st3">ABOUT</text>
 <polygon id="about" class="st4" points="433,536 433,489 409,470 346,483 346,569 351,569 363,555 "/>
+<text transform="matrix(0.9934 -0.115 0.115 0.9934 23.6319 356.0509)"><tspan x="0" y="0" class="st2 st5">C L I CK  O N  T H E   S H I N I N G    O  B J E C T S</tspan><tspan x="0" y="21.6" class="st2 st5">T O   O  P  E  N    R E C I P E S</tspan></text>
 </svg>

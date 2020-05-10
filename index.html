@@ -85,6 +85,9 @@
         .recipe-button {
             transition-property: fill-opacity, opacity;
             transition-duration: 200ms;
+            fill: white;
+            fill-opacity: 0;
+            opacity: 0;
         }
 
         .recipe-button.blink {
@@ -301,6 +304,12 @@
                 <span class="frontitle">Artists' Recipes</span>
                 <span class="frontitle">in Confinement</span>
                 <span class="subtitle"> A Living Cookbook </span>
+                <span class="frontitle">Artists' Recipes</span>
+                <span class="frontitle">in Confinement</span>
+                <span class="subtitle"> A Living Cookbook </span>
+                <span class="frontitle">Artists' Recipes</span>
+                <span class="frontitle">in Confinement</span>
+                <span class="subtitle"> A Living Cookbook </span>
                 <span class="frontitle main">Artists' Recipes</span>
                 <span class="frontitle main">in Confinement</span>
                 <span class="subtitle main">~ A Living Cookbook ~ </span>
@@ -441,10 +450,12 @@
             setInterval(function () {
                 counter++
                 if (counter % 25 === 0) {
+                    console.log('add blink')
                     _iterKitchenButtons(function (id, url, button) {
                         button.classList.add('blink')
                     })
                 } else if (counter % 25 === 1) {
+                    console.log('remove blink')
                     _iterKitchenButtons(function (id, url, button) {
                         button.classList.remove('blink')
                     })

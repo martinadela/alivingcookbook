@@ -466,7 +466,8 @@
         }
 
         const main = function () {
-            fetch('./kitchen.svg')
+            // Add date to bypass caching
+            fetch('./kitchen.svg?' + Date.now())
                 .then(function (response) {
                     return response.text()
                 })
@@ -482,7 +483,8 @@
                 const url = pair[1]
                 const button = document.querySelector('#' + id)
                 if (!button) {
-                    throw new Error(`The element with id "${id}" could not be found in the svg`)
+                    console.error(`The element with id "${id}" could not be found in the svg`)
+                    return
                 }
                 cb(id, url, button)
             })

@@ -11,6 +11,7 @@
 	.st4{fill-opacity:0;}
 	.st5{font-size:9.0003px;}
 	.st6{opacity:0;fill:#FFFFFF;}
+	.st7{opacity:0;}
 </style>
 <g id="collage-website.psd_1_">
 	
@@ -26,4 +27,5 @@
 <text transform="matrix(0.9934 -0.115 0.115 0.9934 228.1153 448.3983)" class="st2 st5">T O   O  P  E  N    R E C I P E S</text>
 <polygon id="leni" class="st6" points="959,438.8 947,438.8 932,454.8 925,468.8 912,481.8 906,491.8 906,520.9 906,530.8 
 	925,540.9 936,540.9 959,545.8 968.2,545.8 980,527.8 992,520.9 992,506.8 992,477.8 985,462.8 "/>
+<polygon id="pamela" class="st7" points="521,193.9 521,212.8 538,217.8 538,187.8 514,180.8 514,193.9 "/>
 </svg>

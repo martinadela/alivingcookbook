@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Jacques+Francois+Shadow&family=Maven+Pro&display=swap"
+    rel="stylesheet">
+
+  <title>
+    Aleksi Jaakola and Harri Piispanen
+  </title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f2f7f8;
+      word-break: keep-all;
+      font-size: 12px;
+      text-align: justify;
+      letter-spacing: 0.1em;
+      max-width: 900px;
+      margin: auto;
+      padding: 0 1em;
+    }
+
+    h1 {
+      display: inline;
+      color: rgba(22, 22, 20, 0.918);
+      text-align: justify;
+      font-size: 100%;
+      text-transform: uppercase;
+      word-break: keep-all;
+      position: static;
+      font-size: 1em;
+
+    }
+
+    .name {
+      font-family: 'Bungee Hairline', cursive;
+      font-size: 600%;
+      color: lightslategrey;
+      text-align: center;
+    }
+
+    .subname {
+      font-family: 'Bungee Hairline', cursive;
+      font-size: 150%;
+      color: rgb(5, 5, 5);
+      text-align: center;
+      margin-bottom: 3em;
+      margin-top: 1em;
+
+    }
+
+    #landscape {
+      width: 100%;
+      margin-bottom: 1em;
+      margin-top: 1em;
+
+    }
+
+    .text1 {
+      font-size: 150%;
+      color: rgb(5, 5, 5);
+      text-align: justify;
+      margin-bottom: 3em;
+      font-family: 'Maven Pro', sans-serif;
+      margin-top: 2em;
+    }
+
+    .text2 {
+      text-align: center;
+      font-family: 'Maven Pro', sans-serif;
+      font-size: 150%;
+
+    }
+
+    .title2 {
+      font-family: 'Bungee Hairline', cursive;
+      font-size: 200%;
+      text-align: center;
+      margin-top: 2em;
+      margin-bottom: 1em;
+
+    }
+
+    #ingredient-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(100px, auto);
+
+    }
+
+    @media screen and (max-width: 600px) {
+      #ingredient-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .ingredient-container {
+      position: relative;
+    }
+
+    .ingredient-container .label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 100%;
+      text-align: center;
+      font-family:'Maven Pro', sans-serif; 
+    }
+
+    .ingredient-container img {
+      width: 100%;
+    }
+
+    .ingredient-no-picture {
+      font-size: 100%;
+      margin: 1em 0;
+    }
+
+    #firebox img {
+      width: 100%;
+      
+    }
+  </style>
+
+
+  <div class="name">
+    <p>
+      <b> Essence of Koli </b>
+    </p>
+
+  </div>
+  <div class="subname">
+    <p>
+      National Landscape as a Concentrate
+    </p>
+  </div>
+
+  <div class="headerimages">
+
+    <img src="kolihuippu2.jpg" id="landscape">
+
+  </div>
+
+
+  <div class="subname">
+    Aleksi Jaakkola and Harri Piispanen
+  </div>
+
+
+  <div class="text1">
+    Two men wearing black suits and ties are hiking in the middle of Finland’s best-known national landscape. They are
+    Harri Piispanen and Aleksi Jaakkola, Kansallisromantikot - the National Romantics. According to their own definition
+    the two artists carry out performative explorations. The method used during these artistic explorations is several
+    days of hiking in the landscape wearing suits.
+    Landscape is concrete. A national landscape on the other hand exists only as a concept. How can something immaterial
+    be turned into a tangible form? What does it feel, smell or taste like? Can it be turned into a product? Is it ok to
+    laugh at it? And to whom does it actually belong to?
+    The National Romantics have visited Koli. The result of the exploration is a new depiction of the iconic national
+    treasure: The Essence of Koli, a concentrate of the national landscape. It is an extract, a miracle tincture,
+    snake-oil or luxurious elixir.
+    This delicate depiction of the national treasure can also be savoured as a hot beverage. The National Romantics
+    recommend using a single drop of the Essence in a cup of boiling water.
+    You can follow the procedure listed below to re-create the landscape concentrate as intended by the National
+    Romantics.
+
+  </div>
+
+  <div class="title2">
+    The Essence of Koli - Recipe
+  </div>
+
+  <div class="text2">
+    -Collect ingredients that depict the selected landscape (ingredients for Koli listed below)
+  </div>
+  <div class="text2">
+    -Create an extract (see Extraction process for details)
+  </div>
+  <div class="text2">
+    -Bottle the extract in a suitable vessel
+  </div>
+  <div class="text2">
+    -Serve in a ceremonial manner worthy of the landscape
+  </div>
+
+  <div class="title2">
+    Ingredients
+  </div>
+
+
+  <div id="ingredient-list">
+
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Rasberry (Rubus idaeus)
+      </div>
+      <img src="raspberry.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Cloudberry (Rubus chamaemorus)
+      </div>
+      <img src="cloudberry.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Lesser burnet (Pimpinella saxifraga)
+      </div>
+      <img src="lesserburnet.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Arctic bramble (Rubus Arcticus)
+      </div>
+      <img src="arcticbramble.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Bladder campion (Silene vulgaris)
+      </div>
+      <img src="bladdercampion.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Self-heal (Prunella Vulgaris)
+      </div>
+      <img src="prunellavulgaris.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Bilberry, berries and stems (Vaccinium Myrtillus)
+      </div>
+      <img src="bilberry.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Quartsite (The Secret Ingredient)
+      </div>
+      <img src="quartz.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Wig knapweed (Centaurea Phrygia)
+      </div>
+      <img src="wigknapweed.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Common haircap (Polytrichum commune)
+      </div>
+      <img src="commonhaircap.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Girgensohn's bogmoss (Sphagnum girgensohnii)
+      </div>
+      <img src="girgensohnbogmoss.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Beard lichen (Usnea dasypoga)
+      </div>
+      <img src="beardlichen.jpg" >
+    </div>
+
+    <div class="ingredient-container">
+      <div class="label">
+        Resin, European spruce (Picea abies)
+      </div>
+      <img src="resin.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        European goldenrod (Solidayo virgaurea)
+      </div>
+      <img src="europeangoldenrod.jpg" >
+    </div>
+    
+    <div class="ingredient-container">
+      <div class="label">
+        Cup lichen (Cladonia fimbriata)
+      </div>
+      <img src="cuplichen.jpg" >
+    </div>
+
+    <div class="ingredient-container">
+      <div class="label">
+        Northern Labrador tea (Rhododendron tomentosum)
+      </div>
+      <img src="northernlabrador.jpg" >
+    </div>
+
+  </div>
+
+  <!-- Ingredients that dont have a picture -->
+
+  <div class="ingredient-no-picture">
+    Sunshine lichen (Vulpicida pinastri)
+  </div>
+
+  <div class="ingredient-no-picture">
+    Charcoal, Pine (Pinus sylvestris)
+  </div>
+  
+
+  <div class="title2">
+    Extraction process
+  </div>
+  <div>
+    <img src="extraction.jpg" id="landscape">
+  </div>
+  <div class="text1">
+
+    Mince each plant separately. Place the minced plan matter into separate sealable glass containers. Fill the
+    containers with Spiritus Fortis (Ethanolum 96 %) til the dry mass or material is fully submerged to the liquid.
+    Leave the plants to extract for 11 months.
+  </div>
+  <div class="text1">
+    Hereafter, separate plant particles from the liquid by filtration. Subsequently, evaporate the alcohol rich
+    extraction by ⅔ of its mass content.
+    Repeat this procedure with all the ingredients separately, in the fullness of time, you will have eighteenth
+    separate bottles with single filtered and evaporated extracts.
+  </div>
+  <div class="text1">
+    Note: Remember to label each container or bottle accurately.
+  </div>
+
+  <div class="title2">
+    Preparing the National Landscape for consumption (50 servings):
+  </div>
+  <div>
+    <img src="prosess.jpg" id="landscape">
+  </div>
+
+  <div class="text1">
+    Take 5/100 tspm of each extract with pipette to one container. Gently stir or mix and let it rest while preparing
+    other ingredients.
+  </div>
+  <div>
+    <img src="extractdrop.jpg" id="landscape">
+  </div>
+  <div class="text1">
+    Prepare serving cups, lit candles and empty your mind from unnecessary thoughts while heating water on the stove or
+    other heaters.
+  </div>
+  <div id="firebox">
+    <img src="fire.jpg" >
+  </div>
+  <div class="text1">
+    When the water is boiling, let it rest a while before pouring into the cups. Next, add a drop of the mixed extract
+    (0,01 tspm) to each serving cup.
+  </div>
+
+  <img src="huuto.jpg" id="landscape">
+
+  </div>
+
+  <div class="subname">
+    Essence of Koli- Galleria Huuto
+  </div>
+
+
+  <div>
+
+  </div>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

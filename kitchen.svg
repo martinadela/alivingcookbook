@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="collage_website_xA0_Image_1_"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="202 70.9 1000 700"
-	 style="enable-background:new 202 70.9 1000 700;" xml:space="preserve">
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="194 47 1000 700"
+	 style="enable-background:new 194 47 1000 700;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;fill-opacity:0;}
 	.st1{opacity:0.72;enable-background:new    ;}
 	.st2{font-family:'MinionPro-Regular';}
 	.st3{font-size:12px;}
 	.st4{fill-opacity:0;}
-	.st5{font-size:9.0006px;}
-	.st6{opacity:0;}
+	.st5{font-size:9.0009px;}
+	.st6{opacity:0;fill:#FFFFFF;}
 </style>
 <g id="collage-website.psd_1_">
 	
-		<image style="overflow:visible;enable-background:new    ;" width="1000" height="701" id="collage-website" xlink:href="19504E45B9103A56.jpg"  transform="matrix(1 0 0 0.9986 202 69.89)">
+		<image style="overflow:visible;enable-background:new    ;" width="1000" height="702" id="collage-website" xlink:href="19504E45B9103A56.jpg"  transform="matrix(0.9995 0 0 0.9981 194.235 46.6561)">
 	</image>
 </g>
-<polygon id="vejay" class="st0" points="497,147.9 484,147.9 460,147.9 460,192.9 497,192.9 "/>
-<path id="chaveli" class="st0" d="M288,563.9v-30c0,0,12-14,37-14c0,0,26,2,69,22c0,0,14,5,10,45l-43,11l-73-23V563.9z"/>
-<path id="martina" class="st0" d="M952,658.9c0,0-37,0-31,23c0,0,2,21,31,35h35c0,0,14-5,29-35C1016,681.9,1015,656.9,952,658.9z"/>
-<text transform="matrix(0.9892 -0.1466 0.1466 0.9892 587.6272 590.8412)" class="st1 st2 st3">ABOUT</text>
-<polygon id="about" class="st4" points="635,605.9 635,558.9 611,539.9 548,552.9 548,638.9 553,638.9 565,624.9 "/>
-<text transform="matrix(0.9934 -0.115 0.115 0.9934 225.6308 425.9406)" class="st2 st5">C L I CK  O N  T H E   S H I N I N G    O  B J E C T S</text>
-<text transform="matrix(0.9934 -0.115 0.115 0.9934 228.1147 447.3979)" class="st2 st5">T O   O  P  E  N    R E C I P E S</text>
-<polygon id="leni" class="st0" points="959,437.8 947,437.8 932,453.8 925,467.8 912,480.8 906,490.8 906,519.9 906,529.8 
-	925,539.9 936,539.9 959,544.8 968.2,544.8 980,526.8 992,519.9 992,505.8 992,476.8 985,461.8 "/>
-<polygon id="pamela" class="st4" points="521,192.9 521,211.8 538,216.8 538,186.8 514,179.8 514,192.9 "/>
-<polygon id="vidha" class="st6" points="283,236.8 302,236.8 320,236.8 332,236.8 337,236.8 337,259.8 337,282.8 337,344.8 
-	326,344.8 326,334.8 325,319.8 325,307.8 325,297.8 315,297.8 283,297.8 "/>
+<polygon id="vejay" class="st0" points="489,125 476,125 452,125 452,170 489,170 "/>
+<path id="chaveli" class="st0" d="M280,541v-30c0,0,12-14,37-14c0,0,26,2,69,22c0,0,14,5,10,45l-43,11l-73-23V541z"/>
+<path id="martina" class="st0" d="M944,636c0,0-37,0-31,23c0,0,2,21,31,35h35c0,0,14-5,29-35C1008,659,1007,634,944,636z"/>
+<text transform="matrix(0.9892 -0.1466 0.1466 0.9892 579.6272 567.9419)" class="st1 st2 st3">ABOUT</text>
+<polygon id="about" class="st4" points="627,583 627,536 603,517 540,530 540,616 545,616 557,602 "/>
+<text transform="matrix(0.9934 -0.115 0.115 0.9934 217.6308 403.041)" class="st2 st5">C L I CK  O N  T H E   S H I N I N G    O  B J E C T S</text>
+<text transform="matrix(0.9934 -0.115 0.115 0.9934 220.1143 424.4983)" class="st2 st5">T O   O  P  E  N    R E C I P E S</text>
+<polygon id="leni" class="st0" points="951,414.9 939,414.9 924,430.9 917,444.9 904,457.9 898,467.9 898,497 898,506.9 917,517 
+	928,517 951,521.9 960.2,521.9 972,503.9 984,497 984,482.9 984,453.9 977,438.9 "/>
+<polygon id="pamela" class="st4" points="513,170 513,188.9 530,193.9 530,163.9 506,156.9 506,170 "/>
+<polygon id="vidha" class="st4" points="275,213.9 294,213.9 312,213.9 324,213.9 329,213.9 329,236.9 329,259.9 329,321.9 
+	318,321.9 318,311.9 317,296.9 317,284.9 317,274.9 307,274.9 275,274.9 "/>
+<polygon id="aleksi" class="st6" points="705,403 705,371 711,366 728,366 733,366 733,374 737,384.5 737,403 "/>
 </svg>
